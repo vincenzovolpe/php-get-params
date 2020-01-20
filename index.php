@@ -11,17 +11,17 @@ EOT;
     $str_censurata = $_GET['stringa'];
     // Memorizzo la stringa da inserire nella parola da censurare in una variabile
     $str_nascosta = '***';
-
-        if (isset($str_censurata)) {
-
-            if (strpos($testo, $str_censurata) > 0) {
-                // Utilizzo la funzione che mi sostituisce la parola censurata con gli asterischi
-                $testo_censurato = str_replace($str_censurata, $str_nascosta, $testo);
-                echo '<h3>Testo con la parola "'.$str_censurata.'" censurata</h3>';
-                echo '<p>'.$testo_censurato.'</p>';
-            } else {
-                echo '<h4>La parola "'.$str_censurata.'" non è presente nel testo</h4>';
-            }
+    // Controllo se esiste il parametro GET
+    if (isset($str_censurata)) {
+        // Controllo se nel testo esiste la stringa inserita nel parametro GET
+        if (strpos($testo, $str_censurata) > 0) {
+            // Utilizzo la funzione che mi sostituisce la parola censurata con gli asterischi
+            $testo_censurato = str_replace($str_censurata, $str_nascosta, $testo);
+            echo '<h3>Testo con la parola "'.$str_censurata.'" censurata</h3>';
+            echo '<p>'.$testo_censurato.'</p>';
+        } else {
+            echo '<h4>La parola "'.$str_censurata.'" non è presente nel testo</h4>';
         }
+    }
 
 ?>
